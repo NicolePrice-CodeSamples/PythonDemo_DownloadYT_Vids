@@ -1,0 +1,17 @@
+# Exclude venv directory
+venv/
+
+#  Exclude compiled Python files
+*.pyc
+
+#  Exclude IDE specific files
+.idea/
+.vscode/
+
+#  Exclude all downloaded Video Files (as a result of running the Python script).  Note, these are user designated destination folders for downloaded videos
+**/YouTube_Downloads/
+
+#  Exclude other files or patterns
+file_to_exclude.txt
+folder_to_exclude/
+*.tmp
