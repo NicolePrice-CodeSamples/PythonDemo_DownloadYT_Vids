@@ -1,5 +1,5 @@
 def welcome_message():
-    print("Welcome to my quick and easy tool to download YouTube videos (without a Prime membership)")
+    print("Congrats on finding a simple tool to download YouTube videos (without a Premium membership)")
     print("Initializing...")
     # Perform any necessary setup tasks here
 

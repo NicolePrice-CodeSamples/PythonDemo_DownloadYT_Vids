@@ -2,7 +2,6 @@ import subprocess
 import sys
 import os
 
-
 def check_venv(project_path):
     venv_activate_path = os.path.join(project_path, "venv/bin/activate")
 
@@ -33,7 +32,6 @@ def check_dependencies():
         except subprocess.CalledProcessError:
             print("Failed to install the required packages.")
             sys.exit(1)
-
 
 def welcome_message():
     print("Welcome, I'm here to help you download any YouTube video to your desired directory, without a subscription!")
