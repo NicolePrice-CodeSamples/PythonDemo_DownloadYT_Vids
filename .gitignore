@@ -15,3 +15,5 @@ venv/
 file_to_exclude.txt
 folder_to_exclude/
 *.tmp
+*.mp4
+*.webm
