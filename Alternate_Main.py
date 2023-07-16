@@ -2,8 +2,9 @@ import subprocess
 import sys
 import os
 
-def check_venv(project_path):
-    venv_activate_path = os.path.join(project_path, "venv/bin/activate")
+def check_venv():
+    project_path = os.path.abspath(os.path.dirname(__file__))
+    venv_activate_path = os.path.join(project_path, "DevVenv", "Scripts", "activate.bat")
 
     if not os.path.exists(venv_activate_path):
         print("Virtual environment not found in the specified project path.")
@@ -12,13 +13,12 @@ def check_venv(project_path):
     if not hasattr(sys, "real_prefix") and not (hasattr(sys, "base_prefix") and sys.base_prefix != sys.prefix):
         print("Virtual environment not activated. Activating...")
         try:
-            activate_cmd = f"source {venv_activate_path}"
+            activate_cmd = f"\"{venv_activate_path}\""
             subprocess.check_call(activate_cmd, shell=True)
             print("Virtual environment activated successfully.")
         except subprocess.CalledProcessError:
             print("Failed to activate the virtual environment.")
             sys.exit(1)
-
 
 def check_dependencies():
     try:
@@ -38,12 +38,16 @@ def welcome_message():
     print("Initializing...checking to see if you have all you need installed on your system to execute...")
     # Perform any necessary setup tasks here
 
-
 def main():
-    project_path = input("As part of this check, I'll need you to enter the path of the directory this script was "
-                         "initiated from: ")
-    check_venv(project_path)
+    check_venv()
     check_dependencies()
+    # Execute the main functionality of the program
+    welcome_message()
+    # Rest of your YouTube video download code or other functionality here
+
+#  This next step determines if the program is triggered via the main, or if it is initiated from another function
+if __name__ == "__main__":
+    main()
     # Execute the main functionality of the program
 
 
