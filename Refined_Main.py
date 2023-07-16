@@ -73,15 +73,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-    #  This next step determines if the program is triggered via the main, or if it is initiated from another function
-    if __name__ == "__main__":
-        main()
-        # Execute the main functionality of the program
-
-    #  This next step determines if the program is triggered via the main, or if it is initiated from another function
-    if __name__ == "__main__":
-        main()
-
     # This is a quick Python script to download videos from YouTube without premium subscription
 
     from pytube import YouTube
