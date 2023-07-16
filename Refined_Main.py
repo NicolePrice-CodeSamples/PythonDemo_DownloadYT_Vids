@@ -1,9 +1,20 @@
+"""
+YouTube Video Downloader Script
+
+This script allows users to download YouTube videos to a specified directory without a subscription. It verifies the presence of a virtual environment and installs required packages before executing the download functionality.
+"""
+
 import subprocess
 import sys
 import os
 import time
 
 def check_venv():
+    """
+       Check Virtual Environment
+
+       This function verifies the presence and activation status of the virtual environment associated with the script's directory. If the virtual environment is not found or not activated, it attempts to activate it.
+       """
     project_path = os.path.abspath(os.path.dirname(__file__))
     venv_activate_path = os.path.join(project_path, "DevVenv", "Scripts", "activate.bat")
 
@@ -22,6 +33,11 @@ def check_venv():
             sys.exit(1)
 
 def check_dependencies():
+    """
+      Check and Install Dependencies
+
+      This function checks whether all the required Python packages specified in the 'requirements.txt' file are installed. If any package is missing, it installs them.
+      """
     try:
         import required_package
         print("All required packages are installed.")
@@ -35,8 +51,13 @@ def check_dependencies():
             sys.exit(1)
 
 def welcome_message():
+    """
+       Welcome and Initialization
+
+       This function displays a welcome message to the user and initializes the script by checking for all necessary dependencies. It also adds a 7-second pause to provide the user with time to read the message.
+       """
     print("Welcome, I'm here to help you download any YouTube video to your desired directory, without a subscription!")
-    print("Initializing...checking to see if you have all you need installed on your system to execute...")
+    print("Initializing...checking to see if you have all you need installed on your system to execute.  This may take a few Minutes...")
     time.sleep(7)  # Add a 7-second pause here
     # Perform any necessary setup tasks here
 
