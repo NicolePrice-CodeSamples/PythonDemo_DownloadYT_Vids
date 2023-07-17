@@ -1,5 +1,7 @@
 # Exclude venv directory
 venv/
+*venv/
+venv/
 
 #  Exclude compiled Python files
 *.pyc

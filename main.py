@@ -15,22 +15,39 @@ def check_venv():
 
        This function verifies the presence and activation status of the virtual environment associated with the script's directory. If the virtual environment is not found or not activated, it attempts to activate it.
        """
-    project_path = os.path.abspath(os.path.dirname(__file__))
-    venv_activate_path = os.path.join(project_path, "DevVenv", "Scripts", "activate.bat")
 
-    if not os.path.exists(venv_activate_path):
-        print("Virtual environment not found in the specified project path.")
-        sys.exit(1)
+    def check_venv():
+        """
+        Check Virtual Environment
 
-    if not hasattr(sys, "real_prefix") and not (hasattr(sys, "base_prefix") and sys.base_prefix != sys.prefix):
-        print("Virtual environment not activated. Activating...")
-        try:
-            activate_cmd = f"\"{venv_activate_path}\""
-            subprocess.check_call(activate_cmd, shell=True)
-            print("Virtual environment activated successfully.")
-        except subprocess.CalledProcessError:
-            print("Failed to activate the virtual environment.")
+        This function verifies the presence and activation status of the virtual environment associated with the script's directory. If a virtual environment is found, it attempts to activate it.
+        """
+        project_path = os.path.abspath(os.path.dirname(__file__))
+
+        # List of possible virtual environment activation scripts based on platform
+        activation_scripts = ["activate", "activate.bat", "activate.ps1"]
+
+        venv_activated = False
+
+        for script in activation_scripts:
+            venv_activate_path = os.path.join(project_path, script)
+
+            if os.path.exists(venv_activate_path):
+                print(f"Virtual environment activation script found: {script}")
+                try:
+                    activate_cmd = f"\"{venv_activate_path}\""
+                    subprocess.check_call(activate_cmd, shell=True)
+                    print("Virtual environment activated successfully.")
+                    venv_activated = True
+                    break
+                except subprocess.CalledProcessError:
+                    print("Failed to activate the virtual environment.")
+                    sys.exit(1)
+
+        if not venv_activated:
+            print("Virtual environment not found or not activated.")
             sys.exit(1)
+
 
 def check_dependencies():
     """
